@@ -1,0 +1,314 @@
+/* Container da Tabela para Scroll Horizontal */
+.container{
+  margin-top: 50px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.80rem;
+  padding: 0px 10px;
+  padding-bottom: 60px;
+}
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+h1{
+  margin: 0px;
+  color: var(--neutral-400);
+  font-size: 1.5rem;
+}
+
+.actionButton button {
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background-color: var(--green-500);
+}
+.container .backButton {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.80rem;
+  width: 80px;
+  height: 30px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  margin-top: 20px;
+}
+
+/* Estilo para Cabeçalho e Células da Tabela */
+.table th, .table td {
+  
+  padding: 10px;
+  text-align: left;
+  color: #555;
+  border-bottom: 1px solid #ccc;
+  vertical-align: middle; /* Centraliza verticalmente */
+  
+}
+.table th.center, th.conta, th.produto{
+  font-size: 0.85rem;
+}
+
+
+/* Garantir que os cabeçalhos não quebrem a linha */
+.table th {
+  white-space: nowrap; /* Impede quebra de linha nos cabeçalhos */
+  background-color: #f9f9f9;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Ajuste de Largura da Coluna "Produto" e alinhamento do conteúdo */
+.table th.product_column, .table td.product_column {
+  width: 200px; /* Ajuste conforme necessário */
+  white-space: normal; /* Permite quebra de linha no conteúdo */
+  text-align: left; /* Garante alinhamento à esquerda */
+  vertical-align: middle; /* Centraliza o texto verticalmente */
+}
+
+/* Estilo para alinhar imagem e descrição do produto */
+.productInfo {
+  display: flex;
+  align-items: center;
+}
+
+.productInfo img {
+  margin-right: 10px; /* Espaçamento entre a imagem e o texto */
+}
+
+.productInfo span {
+  white-space: normal; /* Permite que o texto quebre em várias linhas */
+  word-wrap: break-word; /* Quebra palavras longas se necessário */
+}
+
+.table th.center, .table td.center {
+  text-align: center;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.accountStyleColumn span{
+  display: flex; 
+  font-size: 0.8rem;
+}
+
+/* Ajuste de Imagens na Tabela */
+.productImageTable {
+  width: 80px;  
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+/* Estilo para Ações */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.actions button, .actions a {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.actions button:hover, .actions a:hover {
+  background-color: #0056b3;
+}
+
+.actions button:focus, .actions a:focus {
+  outline: none;
+}
+
+.nextButton {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+/* Paginação */
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  background-color: #fff;
+}
+
+.pageButton {
+  background-color: #2542E0;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pageButton:hover {
+  background-color: #1a2e7a;
+}
+
+.activePageButton {
+  background-color: #1a2e7a;
+}
+
+.disabledPageButton {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.paginate_alpha {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 10px 0;
+}
+
+/* Input de Busca */
+.searchInput {
+  display: block;
+  width: 50%;
+  padding: 10px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: var(--gray-500);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* Loading Spinner */
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /*background-color: rgba(255, 255, 255, 0.8);*/
+  z-index: 1;
+}
+
+.spinner {
+  height: 30px;
+  width: 30px;
+}
+
+/* Voltar Página */
+.toBackPage {
+  display: flex;
+  justify-content: center;
+  padding: 0px;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+li {
+  list-style: none;
+}
+ 
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.titleContainer button{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 90px;
+  height: 40px;
+  font-size: 0.85rem;
+}
+
+.table th{
+  background-color: #55555517;
+}
+/* Boras superiores da tabela */
+table thead tr th:first-child {
+  border-top-left-radius: 10px;  
+}
+table thead tr th:last-child {
+  border-top-right-radius: 10px; 
+}
+
+.expandedRow > div {
+  
+  display: flex;
+  flex-direction: row; /* Alinhar na vertical */
+  margin: 0px;
+  padding: 0px;
+  gap: 10px; /* Ajuste o espaço entre os itens */
+  align-items: flex-start; /* Alinha os itens ao início do contêiner */
+}
+.expandedRow p{
+  font-size: 0.85rem;
+}
+.expandedRow > div p:first-of-type{
+  color: #ecbb18;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 5px; /* Espaço inferior para separar o título dos detalhes */
+}
+
+.expandedRow > div p {
+  margin: 0;
+  padding: 0;
+}
+ 
+/* Ajuste de Layout Responsivo */
+@media(max-width: 768px) {
+  .table th, .table td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .actions button, .actions a {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .pageButton {
+    padding: 8px 12px;
+  }
+}
+
+@media(min-width: 1920px) {
+  .table th, .table td {
+    font-size: 12px; /* Diminui o tamanho da fonte em telas grandes */
+  }
+}

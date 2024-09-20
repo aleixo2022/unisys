@@ -1,0 +1,21 @@
+[
+    {
+      "nota": "123456",
+      "saldo": 10000,
+      "dataEmissao": "2024-05-01",
+      "cliente": "Empresa A"
+    },
+    {
+      "nota": "654321",
+      "saldo": 0, 
+      "dataEmissao": "2024-04-15",
+      "cliente": "Empresa B"
+    },
+    {
+      "nota": "789123",
+      "saldo": 5000,
+      "dataEmissao": "2024-03-20",
+      "cliente": "Empresa C"
+    }
+  ]
+  

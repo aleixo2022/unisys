@@ -1,0 +1,22 @@
+.input, .validInput {
+    font-family: 'Roboto', sans-serif;
+    padding: 15px 30px;
+    width: 70%;
+    margin: 10px auto;
+    border: 2px solid var(--gray-200);
+    background-color: var(--white);
+    color: var(--gray-200);
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    display: block;
+}
+
+.validInput {
+    border-color: var(--green-500);
+    background-color: var(--green-100);
+    box-shadow: inset 0px 1px 10px rgba(0, 0, 0, 0.2); 
+}

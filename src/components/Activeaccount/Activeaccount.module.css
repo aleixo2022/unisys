@@ -1,0 +1,74 @@
+/* styles.css */
+.flexcenter {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: auto;  /* Ocupa toda a altura da viewport */
+    margin: 0 auto;
+}
+
+.flexcenter  > div{
+    margin: 20px 5px;
+}
+
+.successMsg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+p{
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
+}
+
+a {
+    color: #0645AD;
+    text-decoration: none;
+  }
+  a:hover, a:focus {
+    text-decoration: underline;
+  }
+  
+  .loader img {
+    width: 64px;  /* pode manter 64px para uma versão mais pequena */
+    height: 64px; /* manter a mesma altura e largura para manter a proporção */
+    display: block; /* centraliza o GIF se dentro de um container com text-align: center */
+    margin: 0 auto; /* centraliza horizontalmente */
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .successMsg, .errorMsg {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .counter {
+    margin-top: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+  }
+  
+
+@media (min-width: 768px) {  
+    .loader img {
+        width: 128px;  
+        height: 128px;
+    }
+}

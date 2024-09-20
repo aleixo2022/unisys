@@ -1,0 +1,128 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 9rem;
+    background-image: linear-gradient(to bottom, var(--main-1) 60%, var(--suport2));
+    height: 16rem;
+    padding: 0.2rem;
+    color: #000;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.container > div {
+    padding: 1rem;
+}
+
+.area {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Alinha verticalmente */
+    align-items: center; /* Alinha horizontalmente */
+}
+
+.indicator {
+    display: flex;
+    justify-content: space-around;
+    width: 100%; /* Adicionado para ajustar a largura */
+    align-items: flex-start;
+}
+
+.kpi {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+.title {
+    margin-left: -200px;
+    color: var(--text1);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.line {
+    height: 1px;
+    margin: 0.5rem 0 10px 0;
+    padding: 0;
+    background-color: var(--text1);
+    width: 25rem;
+}
+
+.value {
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text1);
+    font-weight: 400;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.centerArea {
+    display: flex;
+    justify-content: center;
+}
+
+
+.quantity {
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text1);
+    font-weight: 400;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  .icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+
+  
+/********************************* */
+
+@media(max-width: 1024px) {
+    .title {
+        font-size: 1rem;
+        text-transform: uppercase;
+    }
+
+    .indicator {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        align-items: center;
+    }
+
+    .line {
+        display: none;
+    }
+
+    .value {
+        margin-left: 0;
+        font-size: 1.8rem;
+        color: var(--neutral-200);
+        font-weight: 800;
+    }
+
+    .kpi {
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .area {
+        display: flex;
+        justify-content: center;
+    }
+}

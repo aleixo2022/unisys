@@ -1,0 +1,315 @@
+.container {
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 500px;
+    width: 100%;
+    min-height: 50vh;
+    border: 1px solid var(--neutral1);
+    border-radius: 0.5rem;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    padding: 20px;
+    justify-content: center;
+
+}
+ 
+.inputGroupAlpha {
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+}
+
+.selectedTransaction,
+.inputBlock {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iconInsideInput {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.buttonMajorar {
+    font-family: 'Roboto', sans-serif;
+    padding: 15px 30px;
+    width: 70%;
+    margin: 20px auto;
+    background-color: var(--green-500);
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    display: block;
+}
+
+.buttonMajorar:hover {
+    background-color: var(--green-700);
+}
+
+
+.checkIcon {
+    position: absolute;
+    top: 1.2rem;
+    right: 5rem;
+}
+
+.loadingIcon {
+    position: absolute;
+    top: 1.2rem;
+    right: 5rem;
+    height: 1.5rem;
+}
+
+.errorIcon {
+    position: absolute;
+    top: 1.3rem;
+    right: 5rem;
+    height: 1.5rem;
+}
+
+.transacao {
+    display: flex;  
+    gap: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5rem;
+    color: var(--neutral-400);
+    text-transform: uppercase;
+    background-color: var(--neutral-100);
+    padding-top: 1.5625rem;
+    padding-left:15px;
+    padding-right:15px;
+    border-radius: 10px;
+    box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+
+
+
+@media(max-width:1368px) {
+    .container {
+        position: relative;
+        font-family: 'Roboto', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 90vw;
+        width: 100%;  
+        min-height: 50vh;
+        border: 1px solid var(--neutral1);
+        border-radius: 0.5rem;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+        padding: 20px;
+        justify-content: center;
+    }
+
+    .checkIcon {
+        position: absolute;
+        top: 1.2rem;
+        right: 12rem;
+    }
+
+    .loadingIcon {
+        position: absolute;
+        top: 1.3rem;
+        right: 12rem;
+        height: 1.5rem;
+    }
+
+    .errorIcon {
+        position: absolute;
+        top: 1.4rem;
+        right: 12rem;
+        height: 1.5rem;
+    }
+
+    .errorIcon img {
+        height: 12rem;
+    }
+}
+
+/*  icones */
+.icon_left {
+    font-size: 2rem;
+    color: rgb(111, 111, 112);
+}
+
+.cancelIcon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: var(--red-500);
+    font-size: 24px;
+}
+
+.gearIcon {
+    height: 2rem;
+    margin-bottom: 1.30rem;
+
+    color: var(--neutral-400);
+}
+
+
+/* ###################################### */
+
+@media(max-width:1177px) {
+    .checkIcon {
+        position: absolute;
+        top: 1.2rem;
+        right: 10rem;
+    }
+
+    .loadingIcon {
+        position: absolute;
+        top: 1.3rem;
+        right: 10rem;
+        height: 1.5rem;
+    }
+
+    .errorIcon {
+        position: absolute;
+        top: 1.4rem;
+        right: 10rem;
+        height: 1.5rem;
+    }
+
+    .errorIcon img {
+        height: 10rem;
+    }
+}
+
+@media(max-width:900px) {
+    .checkIcon {
+        position: absolute;
+        top: 1.2rem;
+        right: 8rem;
+    }
+
+    .loadingIcon {
+        position: absolute;
+        top: 1.3rem;
+        right: 8rem;
+        height: 1.5rem;
+    }
+
+    .errorIcon {
+        position: absolute;
+        top: 1.4rem;
+        right: 8rem;
+        height: 1.5rem;
+    }
+
+    .errorIcon img {
+        height: 8rem;
+    }
+}
+
+@media(max-width:500px) {
+    .checkIcon {
+        position: absolute;
+        top: 1.2rem;
+        right: 5rem;
+    }
+
+    .loadingIcon {
+        position: absolute;
+        top: 1.3rem;
+        right: 5rem;
+        height: 1.5rem;
+    }
+
+    .errorIcon {
+        position: absolute;
+        top: 1.4rem;
+        right: 5rem;
+        height: 1.5rem;
+    }
+
+    .errorIcon img {
+        height: 5rem;
+    }
+
+    .cancelIcon {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        cursor: pointer;
+        color: var(--red-500);
+        font-size: 24px;
+    }
+
+}
+
+@media(max-width:400px) {
+    .checkIcon {
+        position: absolute;
+        top: 1.2rem;
+        right: 3rem;
+    }
+
+    .loadingIcon {
+        position: absolute;
+        top: 1.3rem;
+        right: 3rem;
+        height: 1.5rem;
+    }
+
+    .errorIcon {
+        position: absolute;
+        top: 1.4rem;
+        right: 3rem;
+        height: 1.5rem;
+    }
+
+    .errorIcon img {
+        height: 1rem;
+    }
+
+    .transaction {
+        display: none;
+    }
+}
+
+@media(max-width:300px) {
+    .checkIcon {
+        display: none;
+        text-align: center;
+    }
+
+    .loadingIcon {
+        display: none;
+    }
+
+    .errorIcon {
+        display: none;
+    }
+
+    .errorIcon img {
+        display: none;
+    }
+
+    .transaction {
+        display: none;
+    }
+
+    .next {
+        display: none;
+    }
+}

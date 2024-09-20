@@ -1,0 +1,23 @@
+[
+    {
+        "produto": "Notebook Pro",
+        "codigo": "15230",
+        "sku": "NB1234",
+        "saldodia": 15,
+        "nota":"123456789123456789"        
+    },
+    {
+        "produto": "Smartphone X",
+        "codigo": "21910",
+        "sku": "SP4567",
+        "saldodia": 0,
+        "nota":"123456789123456789"   
+    },
+    {
+        "produto": "Tablet Advance",
+        "codigo": "12270",
+        "sku": "TB7890",
+        "saldodia": 20,
+        "nota":"12341234"   
+    }
+]

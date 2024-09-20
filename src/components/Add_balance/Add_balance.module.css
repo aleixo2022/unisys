@@ -1,0 +1,82 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: var(--background0);
+    width: 90vw;
+    height: 50vh;
+    border: 1px solid var(--neutral1);
+    border-radius: 0.5rem;
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.2);
+}
+.forms{
+    width: 90%;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    gap: 3rem;
+}
+
+.title{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: var(--background0);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+ 
+.radioInput{
+    display: flex; 
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.radioInput input{
+    margin: 0;
+}
+
+.radioInput span  {
+    color: var(--gray-500);
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+label{
+    margin: 0;
+    padding: 0;
+}
+
+.forms h3{
+    color: var(--neutral-600);
+    font-family: 'Roboto', sans-serif;
+}
+ 
+ 
+.optionButton button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none; 
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+}
+
+.optionButton button.selected {
+    background-color: var(--main-500);   
+}
+ 
+/* ******************************* */
+
+@media(max-width: 1024px){
+    .forms{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;         
+    }  
+    .forms h3{
+        color: var(--neutral-600);
+        font-family: 'Roboto', sans-serif;
+    }
+}

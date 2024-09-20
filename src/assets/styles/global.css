@@ -1,0 +1,87 @@
+:root{
+  /* cores principais do projeto */
+  --main-1: #2542e0;
+  --main-2: #1630ba;
+  --main-3: #2f3f94;
+  --main-4: #efaa00;
+  --main-5:#c98f00;
+  --main-6:#a37400;
+/* */
+  --suport0:#6c8cd5;
+  --suport1: #dfa000;
+  --suport2:#6f30a2;
+/* cores para avisos */
+--error:#6f30a2;
+--success:#32cd32;
+--warning: #ffa500;
+/* cores neutras */
+--neutral0: #333333;
+--neutral1:hsl(240, 3%, 74%);
+/* cores para usar no background principaal */
+--background0:#ffffff;
+--background1:#f5f5f5;
+--background2:#dfdfdf;
+
+/* cores de textos */
+--text0:#333333;
+--text1:#ffffff;
+--text2: #7b7b7b;
+
+/*  cores neutras */
+--neutral-50: #fafafa;
+--neutral-100:#f5f5f5;
+--neutral-200:#e5e5e5;
+--neutral-300:#d4d4d4;
+--neutral-400:#a3a3a3;
+--neutral-500:#737373;
+--neutral-600:#525252;
+--neutral-700:#404040;
+
+/* vermelho */
+--red-100:#fee2e2;
+--red-200:#fecaca;
+--red-300:#fca5a5;
+--red-400:#f87171;
+--red-500:#ef4444;
+--red-600:#dc2626;
+--red-700:#b91c1c;
+--red-800:#991b1b;
+--red-900:#7f1d1d;
+
+/* verdes */
+--green-100:#dcfce7;
+--green-200:#bbf7d0;
+--green-300:#86efac;
+--green-400:#4ade80;
+--green-500:#22c55e;
+--green-600:#16a34a;
+--green-700:#15803d;
+--green-800:#166534;
+--green-900:#14532d;
+
+
+--gray-100:#9ca3af;
+--gray-500:#6b7280;
+--gray-600:#4b5563;
+--gray-700:#374151;
+--gray-800:#1f2937;
+--gray-900:#111827;
+--gray-950:#030712;
+
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: var(--background0);
+  position: relative;
+}
+
+input:focus {
+  outline-color: var(--main-3);
+  border-color: var(--neutral-300);
+}
