@@ -31,7 +31,7 @@ export function Orders() {
       const queryParam = searchQuery ? `&query=${encodeURIComponent(searchQuery)}` : '';
       const response = await axios.get(`/api/processed_order_data?page=${page}${queryParam}`);
       const { orders, pagination } = response.data;
-
+      console.log(orders)
       const ordersWithDetails = await Promise.all(orders.map(async order => {
         try {
           const detailsResponse = await fetch(`https://api.mercadolibre.com/items/${order.mlb}?include_attributes=all`);
@@ -48,13 +48,16 @@ export function Orders() {
             full_unit_price: order.item_unit_price,
             account: order.title_nickname,
             seller_sku: order.seller_sku,
+            profit : order.profit,
+            profitability: order.profitability
           };
+       
         } catch (err) {
           console.error(`Erro ao buscar detalhes do item ${order.item_id}:`, err);
           return order;
         }
       }));
-
+    
       setData(ordersWithDetails);
       setPagination(pagination);
     } catch (err) {
@@ -216,7 +219,7 @@ export function Orders() {
                         <td className={styles.center}>{formatCurrent(item.commission)}</td>
                         <td className={styles.center}>{formatCurrent(item.discount_total)}</td>
                         <td className={styles.center}>{formatCurrent(item.pass_on)}</td>
-                        <td>0,0</td>
+                        <td className={styles.center}>{(item.profit)}</td>
                         <td className={styles.center}>0,0</td>
                         <td className={`${styles.actionButton} ${styles.center}`}>
                           <a href={item.permalink} target="_blank" rel="noopener noreferrer"><FaEye /></a>
