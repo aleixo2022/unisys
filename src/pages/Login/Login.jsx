@@ -52,7 +52,7 @@ export function Login() {
         dispatch(setEmail({
           email:responseData.email
         }))
-        navigate('/meli/indicadores');
+        navigate('/initial/indicadores');
       } else {
         console.log('Login failed with status:', response.status, 'and message:', responseData.message);
         throw new Error('Servidor offline: ' + responseData.message);

@@ -22,7 +22,7 @@ export function Orders() {
   const navigate = useNavigate();
 
   const goToOrders = () => {
-    navigate('/meli/indicadores');
+    navigate('/initial/indicadores');
   };
 
   const fetchOrders = async (page = 1) => {

@@ -5,10 +5,10 @@ import { Indicadores } from './pages/Indicadores/Indicadores';
 import Register from './pages/register/Register';
 import { ConnectMeli } from './components/connect/Connect';
 import { Activeaccount } from './components/Activeaccount/Activeaccount';
-import { Indicadores as Kpis } from './pages/meli/Indicadores/Indicadores';
+import { Indicadores as Kpis } from './pages/initial/Indicadores/Indicadores';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
-import { Integrations } from './pages/meli/Integrations/Integrations';
-import { Orders } from './pages/meli/Order/Orders';
+import { Integrations } from './pages/initial/Integrations/Integrations';
+import { Orders } from './pages/initial/Order/Orders';
 import { CmpP } from  './pages/cmpPrincipal/Cmp'
 
 export function PrincipalRoutes() {
@@ -20,7 +20,7 @@ export function PrincipalRoutes() {
             <Route path="/register" element={<Register />} />
             <Route path="/connect" element={<ConnectMeli />} />
             <Route path="/activated" element={<Activeaccount />} />
-            <Route path="/meli" element={<ProtectedRoute />}>
+            <Route path="/initial" element={<ProtectedRoute />}>
                 <Route path="indicadores" element={<Kpis />} />
                 <Route path="integrations" element={<Integrations />} />
                 <Route path="orders" element={<Orders />} />         

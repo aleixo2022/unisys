@@ -90,7 +90,7 @@ export function Activeaccount() {
             if(!isAuthenticated){
               handleLogin();
             }else{
-              navigate('/meli/indicadores');
+              navigate('/initial/indicadores');
             }
           }, 3000); // Exibe a mensagem de sucesso por 5 segundos
         } else {
@@ -141,7 +141,7 @@ export function Activeaccount() {
       if(isVerified == true){
         setLoadingOrders(false);
         dispatch(resetIdentityVerify());
-        navigate('/meli/indicadores');
+        navigate('/initial/indicadores');
       }else{
         if (response.status === 200) {
           console.log('Login successful:', responseData);
@@ -154,7 +154,7 @@ export function Activeaccount() {
           
           setTimeout(() => {
             setLoadingOrders(false);
-            navigate('/meli/indicadores');
+            navigate('/initial/indicadores');
           }, 10000); // Simula o tempo de carregamento dos pedidos
         } else {
           throw new Error('Login failed: ' + responseData.message);

@@ -19,7 +19,7 @@ export function CmpP() {
   const navigate = useNavigate();
 
   const goToOrders = () => {
-    navigate('/meli/indicadores');
+    navigate('/initial/indicadores');
   };
 
   const fetchProcessedData = async (page = 1) => {

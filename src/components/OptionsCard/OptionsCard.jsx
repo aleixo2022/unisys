@@ -21,7 +21,7 @@ export function OptionsCard({ onOptionClick }) {
   }
 
   const goToMeliIndicadores = () => {
-      navigate('/meli/indicadores');
+      navigate('/initial/indicadores');
   }
   
   return (

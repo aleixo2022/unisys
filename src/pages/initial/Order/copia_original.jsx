@@ -21,7 +21,7 @@ export function Orders() {
   const navigate = useNavigate();
 
   const goToOrders = () => {
-    navigate('/meli/indicadores');
+    navigate('/initial/indicadores');
   };
 
   useEffect(() => {

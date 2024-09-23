@@ -95,7 +95,7 @@ export function Integrations() {
     };
 
     const handleBackToHome=()=>{
-        navigate('/meli/indicadores')
+        navigate('/initial/indicadores')
     }
     return (
         <>

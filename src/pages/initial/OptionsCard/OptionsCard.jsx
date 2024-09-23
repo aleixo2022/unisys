@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./OptionsCard.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlug, faClipboardList, faChartBar, faDollarSign, faMoneyBillWave } from "@fortawesome/free-solid-svg-icons";
+import {faSlidersH, faPlug, faClipboardList, faChartBar, faDollarSign, faMoneyBillWave } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { useFlash } from "../../../components/contexts/FlashContext";
  
@@ -12,7 +12,7 @@ export function OptionsCard() {
   const { setFlashMessage } = useFlash();
 
   const goToIntegrations = () => {
-    navigate("/meli/integrations");
+    navigate("/initial/integrations");
   }; 
 
   const goToBonificacoes = () => {
@@ -20,7 +20,7 @@ export function OptionsCard() {
   };
 
   const goToOrders =()=>{
-    navigate("/meli/orders")
+    navigate("/initial/orders")
   }
   const goToCMPPrincipal=()=>{
     navigate("/cmp/principal")
@@ -49,6 +49,10 @@ export function OptionsCard() {
         <div className={styles.options_link} onClick={goToCMPPrincipal}>
           <FontAwesomeIcon icon={faMoneyBillWave} color="#7132A3" size="2x" />
           <h6 className={styles.title}>Custo Médio</h6>
+        </div>
+        <div className={styles.options_link} onClick={goToCMPPrincipal}>
+          <FontAwesomeIcon icon={faSlidersH} color="#7132A3" size="2x" />
+          <h6 className={styles.title}>Configurações</h6>
         </div>
       </div>
     </div>
