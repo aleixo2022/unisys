@@ -2,12 +2,13 @@
 
 .container {
   position: relative;
-  margin-top: 10%;
-    padding: 20px;
-    text-align: center;
+  margin-top: 8%;
+  padding: 20px;
+  text-align: center;
   }
   
   .cardContainer {
+    position: relative;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -24,7 +25,10 @@
     position: relative;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
-  
+ h1{
+  margin-bottom: 80px;
+  font-family: 'Roboto', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+ } 
   .card a {
     text-decoration: none;
     color: inherit;
@@ -52,13 +56,13 @@
   }
   
 
-  .container .backButton {
+  .cardContainer .backButton {
     position: absolute;
     display: flex;
     align-items: center;
-    top: 20px;
+    top: -25px;
     gap: 5px;
-    left: 25.5%;
+    left: 25%;
     font-size: 0.80rem;
     width: 80px;
     height: 30px;

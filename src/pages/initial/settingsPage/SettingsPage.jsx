@@ -30,12 +30,16 @@ export function SettingsPage() {
        <>
         <Header />
       <div className={styles.container}>
-      <button className={styles.backButton} onClick={goToHome}>
+     
+        <h1>Configurações</h1>
+       
+        <div className={styles.cardContainer}>
+          
+        <button className={styles.backButton} onClick={goToHome}>
           <FaArrowLeft />
           <span>Voltar</span>
         </button>
-        <h1>Configurações</h1>
-        <div className={styles.cardContainer}>
+
           <div className={styles.card}>
             <Link to="/initial/custos-estados">
               <div className={styles.iconWrapper}>
