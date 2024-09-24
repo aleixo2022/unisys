@@ -17,7 +17,7 @@ export function PrincipalRoutes() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/indicadores" element={<Indicadores />} />
-            <Route path="/register" element={<Register />} />
+            {/* <Route path="/register" element={<Register />} /> */}
             <Route path="/connect" element={<ConnectMeli />} />
             <Route path="/activated" element={<Activeaccount />} />
             <Route path="/initial" element={<ProtectedRoute />}>
