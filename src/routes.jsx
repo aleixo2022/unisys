@@ -25,9 +25,7 @@ export function PrincipalRoutes() {
                 <Route path="integrations" element={<Integrations />} />
                 <Route path="orders" element={<Orders />} />         
             </Route>
-            <Route path="/cmp/principal" element={<CmpP />} />
-            
-        
+            <Route path="/cmp/principal" element={<CmpP />} /> 
             <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
     );
