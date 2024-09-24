@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Home } from './pages/home/Home';
 import { Login } from './pages/Login/Login';
 import { Indicadores } from './pages/Indicadores/Indicadores';
@@ -9,7 +9,7 @@ import { Indicadores as Kpis } from './pages/initial/Indicadores/Indicadores';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import { Integrations } from './pages/initial/Integrations/Integrations';
 import { Orders } from './pages/initial/Order/Orders';
-import { CmpP } from  './pages/cmpPrincipal/Cmp'
+import { CmpP } from './pages/cmpPrincipal/Cmp';
 
 export function PrincipalRoutes() {
     return (
@@ -26,6 +26,8 @@ export function PrincipalRoutes() {
                 <Route path="orders" element={<Orders />} />         
             </Route>
             <Route path="/cmp/principal" element={<CmpP />} />
+            
+            {/* Rota para capturar páginas não encontradas */}
             <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
     );
