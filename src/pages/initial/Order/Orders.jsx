@@ -48,7 +48,7 @@ export function Orders() {
             full_unit_price: order.item_unit_price,
             account: order.title_nickname,
             seller_sku: order.seller_sku,
-            profit : order.profit,
+            profit: order.profit,
             profitability: order.profitability
           };
        
@@ -78,10 +78,31 @@ export function Orders() {
   };
 
   const formatCurrent = (value) => {
+    if (value === null || value === undefined) {
+      return 'N/A';
+    }
     return new Intl.NumberFormat('pt-BR', {
       style: 'currency',
       currency: 'BRL',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     }).format(value);
+  };
+
+  const formatCurrentProfit = (value) => {
+    if (value === null || value === undefined) {
+      return 'N/A';
+    }
+      return value.replace(/\./g, ',');
+  };
+
+  // Função para formatar o lucro percentual (profit)
+  const formatProfit = (value) => {
+    if (value === null || value === undefined) {
+      return 'N/A';
+    }
+    let profit = parseFloat(value); // Divide por 100
+    return profit.toFixed(2); // Formata com duas casas decimais
   };
 
   const handleSort = (key) => {
@@ -101,6 +122,7 @@ export function Orders() {
       setExpandedOrderDetails({
         ...orderDetails,
         seller_sku: data.find(item => item.order_id === orderId).seller_sku,
+        profitability: data.find(item => item.order_id === orderId).profitability,
       });
     }
   };
@@ -219,7 +241,7 @@ export function Orders() {
                         <td className={styles.center}>{formatCurrent(item.commission)}</td>
                         <td className={styles.center}>{formatCurrent(item.discount_total)}</td>
                         <td className={styles.center}>{formatCurrent(item.pass_on)}</td>
-                        <td className={styles.center}>{(item.profit)}</td>
+                        <td className={styles.center}>{formatCurrentProfit(formatProfit(item.profit))} %</td>
                         <td className={styles.center}>0,0</td>
                         <td className={`${styles.actionButton} ${styles.center}`}>
                           <a href={item.permalink} target="_blank" rel="noopener noreferrer"><FaEye /></a>
@@ -229,16 +251,18 @@ export function Orders() {
                             onClick={() => handleViewMore(item.order_id, {
                               refund_freight_flex: item.refund_freight_flex,
                               shared_discount: item.shared_discount,
-                              seller_sku: item.seller_sku
+                              seller_sku: item.seller_sku,
+                              profitability: item.profitability,
                             })}
                           >+</button>
                         </td>
                       </tr>
                       {expandedOrderId === item.order_id && (
                         <tr>
-                          <td colSpan="12" className={styles.expandedRow}>
+                          <td colSpan="14" className={styles.expandedRow}>
                             <div>
                               <p><strong>DETALHES: </strong></p>
+                              <p><strong>Lucro:</strong> {formatCurrent(expandedOrderDetails?.profitability)}</p>
                               <p><strong>Reembolso de Frete:</strong> {formatCurrent(expandedOrderDetails?.refund_freight_flex)}</p>
                               <p><strong>Desconto Compartilhado:</strong> {formatCurrent(expandedOrderDetails?.shared_discount)}</p>
                               <p><strong>SKU:</strong>
