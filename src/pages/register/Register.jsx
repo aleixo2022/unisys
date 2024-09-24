@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import styles from './register.module.css';
 import logo from "../../assets/images/logo.svg";
 import { setEmail } from '../../features/email/emailSlice';
@@ -7,7 +6,12 @@ import { setPassword } from '../../features/password/passwordSlice';
 import { useDispatch } from 'react-redux';
 import { setUsername } from '../../features/username/usernameSlice';
 import { resetIdentityVerify } from '../../features/identity/identityVerify';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { selectIsAuthenticated } from '../../features/session/sessionSlice';
+
 const Register = () => {
+    const isAuthenticated = useSelector(selectIsAuthenticated);
     const [username, setUsernameState] = useState('');
     const [email, setEmailState] = useState('');
     const [password, setPasswordState] = useState('');
@@ -15,7 +19,15 @@ const Register = () => {
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
+ 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isAuthenticated) {
+          navigate('/login');
+          return;       
+    }})
+
     const dispatch = useDispatch();
     const API_URL= import.meta.env.VITE_NGROK_LINK;
 

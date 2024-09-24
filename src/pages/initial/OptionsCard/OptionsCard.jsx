@@ -25,6 +25,9 @@ export function OptionsCard() {
   const goToCMPPrincipal=()=>{
     navigate("/cmp/principal")
   }
+  const goToSettingsPage=()=>{
+    navigate("/initial/configuration")
+  }
 
   return (
     <div>
@@ -50,7 +53,7 @@ export function OptionsCard() {
           <FontAwesomeIcon icon={faMoneyBillWave} color="#7132A3" size="2x" />
           <h6 className={styles.title}>Custo Médio</h6>
         </div>
-        <div className={styles.options_link} onClick="/">
+        <div className={styles.options_link} onClick={goToSettingsPage}>
           <FontAwesomeIcon icon={faSlidersH} color="#7132A3" size="2x" />
           <h6 className={styles.title}>Configurações</h6>
         </div>

@@ -10,23 +10,27 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import { Integrations } from './pages/initial/Integrations/Integrations';
 import { Orders } from './pages/initial/Order/Orders';
 import { CmpP } from './pages/cmpPrincipal/Cmp';
-
+import { SettingsPage } from './pages/initial/settingsPage/SettingsPage';
+import { CostProfileTable } from './pages/initial/costProfileTable/CostProfileTable';
 export function PrincipalRoutes() {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/indicadores" element={<Indicadores />} />
-            {/* <Route path="/register" element={<Register />} /> */}
+            <Route path="/13a2828b3adecc1c32ea3888d08afa51e147b3f3" element={<Register />} />
             <Route path="/connect" element={<ConnectMeli />} />
             <Route path="/activated" element={<Activeaccount />} />
             <Route path="/initial" element={<ProtectedRoute />}>
                 <Route path="indicadores" element={<Kpis />} />
                 <Route path="integrations" element={<Integrations />} />
-                <Route path="orders" element={<Orders />} />         
+                <Route path="orders" element={<Orders />} />    
+                <Route path="configuration" element={<SettingsPage />} />     
+                <Route path="custos-estados" element={<CostProfileTable />} />     
             </Route>
+
             <Route path="/cmp/principal" element={<CmpP />} /> 
-            <Route path="*" element={<Navigate to="/login" replace />} />
+            {/* <Route path="*" element={<Navigate to="/login" replace />} /> */}
         </Routes>
     );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import './CarListingCard.css'; // Estilos customizados
+import './CarListingCard.css';  
 
 const CarListingCard = ({ car }) => {
     return (
