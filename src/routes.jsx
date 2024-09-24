@@ -12,6 +12,7 @@ import { Orders } from './pages/initial/Order/Orders';
 import { CmpP } from './pages/cmpPrincipal/Cmp';
 import { SettingsPage } from './pages/initial/settingsPage/SettingsPage';
 import { CostProfileTable } from './pages/initial/costProfileTable/CostProfileTable';
+
 export function PrincipalRoutes() {
     return (
         <Routes>
@@ -28,9 +29,9 @@ export function PrincipalRoutes() {
                 <Route path="configuration" element={<SettingsPage />} />     
                 <Route path="custos-estados" element={<CostProfileTable />} />     
             </Route>
-
             <Route path="/cmp/principal" element={<CmpP />} /> 
-            {/* <Route path="*" element={<Navigate to="/login" replace />} /> */}
+       
+            <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
     );
 }
