@@ -65,6 +65,11 @@ export function Login() {
     }
   };
 
+  const handleRegisterClick = (e) => {
+    e.preventDefault();
+    alert('Recurso desativado pelo administrador');
+  };
+
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.form}>
@@ -95,7 +100,7 @@ export function Login() {
           {loading ? 'Carregando...' : 'Entrar'}
         </button>
         <div className={styles.registerLink}>
-          <Link to="#">
+          <Link to="#" onClick={handleRegisterClick}>
             <FaUserPlus />Cadastrar novo
           </Link>
         </div>
