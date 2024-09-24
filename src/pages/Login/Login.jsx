@@ -95,7 +95,7 @@ export function Login() {
           {loading ? 'Carregando...' : 'Entrar'}
         </button>
         <div className={styles.registerLink}>
-          <Link to="/register">
+          <Link to="#">
             <FaUserPlus />Cadastrar novo
           </Link>
         </div>

@@ -27,7 +27,7 @@ export function PrincipalRoutes() {
             </Route>
             <Route path="/cmp/principal" element={<CmpP />} />
             
-            {/* Rota para capturar páginas não encontradas */}
+        
             <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
     );
