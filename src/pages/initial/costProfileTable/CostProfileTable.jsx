@@ -46,6 +46,7 @@ export function CostProfileTable() {
         state: row.state,
         state_code: row.state_code,
         percentage: parseFloat(row.percentage),
+        own:parseFloat(row.own),
       });
       setEditingRowId(null);
       fetchData();
@@ -65,7 +66,7 @@ export function CostProfileTable() {
 
   const handleAdd = async () => {
     // Validação simples dos campos
-    if (!newRow.state || !newRow.state_code || !newRow.percentage) {
+    if (!newRow.state || !newRow.state_code || !newRow.percentage || !newRow.own) {
       alert('Por favor, preencha todos os campos.');
       return;
     }
@@ -75,8 +76,9 @@ export function CostProfileTable() {
         state: newRow.state.trim(),
         state_code: newRow.state_code.trim(),
         percentage: parseFloat(newRow.percentage),
+        own: parseFloat(newRow.own),
       });
-      setNewRow({ state: '', state_code: '', percentage: '' });
+      setNewRow({ state: '', state_code: '', percentage: '' , own: ''});
       fetchData();
     } catch (error) {
       if (error.response && error.response.status === 409) {
@@ -159,6 +161,21 @@ export function CostProfileTable() {
           ),
       },
       {
+        Header: 'Proprio',
+        accessor: 'own',
+        Cell: ({ row, value }) =>
+          editingRowId === row.original.id ? (
+            <input
+              type="number"
+              step="0.01"
+              value={value}
+              onChange={(e) => handleInputChange(e, row.index, 'own')}
+            />
+          ) : (
+            `${parseFloat(value).toFixed(2)}%`
+          ),
+      },
+      {
         Header: 'Editar',
         accessor: 'edit',
         Cell: ({ row }) =>
@@ -232,8 +249,7 @@ export function CostProfileTable() {
     <>
       <Header />
 
-      <div className={styles.container}>
-      
+      <div className={styles.container}>      
         <h2>Tabela de Estados</h2>
         <table {...getTableProps()} className={styles.table}>
         <button className={styles.backButton} onClick={goToHome}>
@@ -276,6 +292,16 @@ export function CostProfileTable() {
                   value={newRow.percentage}
                   onChange={handleNewRowChange}
                   placeholder="Porcentagem"
+                />
+              </th>
+              <th>
+                <input
+                  name="own"
+                  type="number"
+                  step="0.01"
+                  value={newRow.own}
+                  onChange={handleNewRowChange}
+                  placeholder="Próprio"
                 />
               </th>
               <th colSpan="2">
