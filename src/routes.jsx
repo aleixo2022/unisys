@@ -12,12 +12,14 @@ import { Orders } from './pages/initial/Order/Orders';
 import { CmpP } from './pages/cmpPrincipal/Cmp';
 import { SettingsPage } from './pages/initial/settingsPage/SettingsPage';
 import { CostProfileTable } from './pages/initial/costProfileTable/CostProfileTable';
+ 
 
 export function PrincipalRoutes() {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/indicadores" element={<Indicadores />} />
             <Route path="/13a2828b3adecc1c32ea3888d08afa51e147b3f3" element={<Register />} />
             <Route path="/connect" element={<ConnectMeli />} />

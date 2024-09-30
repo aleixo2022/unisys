@@ -100,7 +100,9 @@ export function Login() {
           {loading ? 'Carregando...' : 'Entrar'}
         </button>
         <div className={styles.registerLink}>
-          <Link to="#" onClick={handleRegisterClick}>
+          <Link to="/register" 
+          // onClick={handleRegisterClick}
+          >
             <FaUserPlus />Cadastrar novo
           </Link>
         </div>

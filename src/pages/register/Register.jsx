@@ -22,11 +22,11 @@ const Register = () => {
  
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!isAuthenticated) {
-          navigate('/login');
-          return;       
-    }})
+    // useEffect(() => {
+    //     if (!isAuthenticated) {
+    //       navigate('/login');
+    //       return;       
+    // }})
 
     const dispatch = useDispatch();
     const API_URL= import.meta.env.VITE_NGROK_LINK;
