@@ -45,7 +45,7 @@ export function SettingsPage() {
               <div className={styles.iconWrapper}>
                 <RiMapPin2Line size={50} color="#007BFF" className={`${styles.icon} ${styles.iconUp}`}/>
               </div>
-              <h2>Aliquota Interestaduais</h2>
+              <h2>Alíquota Interestadual</h2>
             </Link>
           </div>
           <div className={styles.card}>

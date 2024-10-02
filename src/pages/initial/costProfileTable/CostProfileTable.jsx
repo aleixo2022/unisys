@@ -250,7 +250,7 @@ export function CostProfileTable() {
       <Header />
 
       <div className={styles.container}>      
-        <h2>Tabela de Estados</h2>
+        <h2>Tabela de Alíquotas Interestaduais</h2>
         <table {...getTableProps()} className={styles.table}>
         <button className={styles.backButton} onClick={goToHome}>
           <FaArrowLeft />
