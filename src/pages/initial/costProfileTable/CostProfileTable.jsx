@@ -146,7 +146,7 @@ export function CostProfileTable() {
           ),
       },
       {
-        Header: 'Porcentagem',
+        Header: 'Alíq. Interestadual',
         accessor: 'percentage',
         Cell: ({ row, value }) =>
           editingRowId === row.original.id ? (
