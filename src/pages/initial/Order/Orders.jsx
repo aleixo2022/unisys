@@ -49,7 +49,8 @@ export function Orders() {
             account: order.title_nickname,
             seller_sku: order.seller_sku,
             profit: order.profit,
-            profitability: order.profitability
+            profitability: order.profitability,
+            state:order.state
           };
        
         } catch (err) {
@@ -253,6 +254,7 @@ export function Orders() {
                               shared_discount: item.shared_discount,
                               seller_sku: item.seller_sku,
                               profitability: item.profitability,
+                              state:item.state,
                             })}
                           >+</button>
                         </td>
@@ -262,6 +264,7 @@ export function Orders() {
                           <td colSpan="14" className={styles.expandedRow}>
                             <div>
                               <p><strong>DETALHES: </strong></p>
+                              <p><strong>Estado Origem:</strong> {expandedOrderDetails?.state}</p>
                               <p><strong>Lucro:</strong> {formatCurrent(expandedOrderDetails?.profitability)}</p>
                               <p><strong>Reembolso de Frete:</strong> {formatCurrent(expandedOrderDetails?.refund_freight_flex)}</p>
                               <p><strong>Desconto Compartilhado:</strong> {formatCurrent(expandedOrderDetails?.shared_discount)}</p>
