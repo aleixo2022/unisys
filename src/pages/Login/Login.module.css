@@ -79,6 +79,31 @@ button:hover {
   margin-right: 8px;
 }
 
+/* configurações do remeberme checked */
+.checkboxContainer {
+  display: flex;
+  align-items: center; /* Alinha o checkbox e o texto verticalmente */
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: nowrap; 
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center; /* Garante o alinhamento vertical entre o checkbox e o texto */
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.checkboxLabel input {
+  margin: 0; /* Remove a margem padrão do checkbox */
+  transform: translateY(1px); /* Ajusta o posicionamento vertical do checkbox */
+}
+
+.checkboxLabel span {
+  margin-left: 8px; /* Espaço entre o checkbox e o texto */
+}
+
 
 /* ****************** */
 

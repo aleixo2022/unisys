@@ -12,7 +12,12 @@ export function Header() {
 
   const handleLogout = () => {
     dispatch(logout());
-    localStorage.clear();
+    
+    // Remover apenas os tokens, mantendo as credenciais de login e rememberMe
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    
+    // Navegar de volta à página de login
     navigate('/');
   };
 

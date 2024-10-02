@@ -12,30 +12,30 @@ export function Login() {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false)
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_NGROK_LINK;
 
-  // Carregar login e senha do LocalStorage quando a página for carregada
   useEffect(() => {
     const savedUsername = localStorage.getItem('username');
     const savedPassword = localStorage.getItem('password');
     const savedRememberMe = localStorage.getItem('rememberMe') === 'true';
-    //console.log(savedUsername, savedPassword)
+
     if (savedRememberMe) {
-      setUsername(savedUsername || ""); // Preenche o campo de usuário
-      setPassword(savedPassword || ""); // Preenche o campo de senha
-      setRememberMe(true); // Manter a checkbox marcada
+      setUsername(savedUsername || "");
+      setPassword(savedPassword || "");
+      setRememberMe(true);
     }
   }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-   // console.log("Login attempt: ", username, password);
+    console.log("Login attempt: ", username, password);
 
     setLoading(true);
+    //const loginUrl = 'https://unisys-7981816f1ad6.herokuapp.com/auth/login';
     const loginUrl = `${API_URL}/auth/login`;
     const loginBody = {
       username: username,
@@ -57,7 +57,7 @@ export function Login() {
       const responseData = await response.json();
 
       if (response.status === 200) {
-       // console.log('Login successful:', responseData);
+        console.log('Login successful:', responseData);
         dispatch(setTokens({
           accessToken: responseData.access_token,
           refreshToken: responseData.refresh_token
@@ -65,11 +65,9 @@ export function Login() {
 
         dispatch(setEmail({
           email: responseData.email
-        }));
+        }))
 
-        // Se o usuário marcou "Lembrar login e senha", salvar no LocalStorage
         if (rememberMe) {
-          // console.log("lembrar senha: "+rememberMe)
           localStorage.setItem('username', username);
           localStorage.setItem('password', password);
           localStorage.setItem('rememberMe', true);
@@ -80,7 +78,7 @@ export function Login() {
 
         navigate('/initial/indicadores');
       } else {
-       // console.log('Login failed with status:', response.status, 'and message:', responseData.message);
+        console.log('Login failed with status:', response.status, 'and message:', responseData.message);
         throw new Error('Servidor offline: ' + responseData.message);
       }
     } catch (error) {
@@ -89,6 +87,11 @@ export function Login() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleRegisterClick = (e) => {
+    e.preventDefault();
+    alert('Recurso desativado pelo administrador');
   };
 
   return (
@@ -121,17 +124,24 @@ export function Login() {
         <button type="submit" disabled={loading}>
           {loading ? 'Carregando...' : 'Entrar'}
         </button>
-
         <div className={styles.checkboxContainer}>
-          <label className={styles.checkboxLabel}>
-            <input 
-              type="checkbox"
-              checked={rememberMe}
-              onChange={(e) => setRememberMe(e.target.checked)}
-            />
-            <span>Lembrar login e senha</span>
-          </label>
-        </div>
+  <label className={styles.checkboxLabel}>
+    <input 
+      type="checkbox"
+      checked={rememberMe}
+      onChange={(e) => setRememberMe(e.target.checked)}
+    />
+    <span>Lembrar login e senha</span>
+  </label>
+</div>
+
+        {/* <div className={styles.registerLink}>
+          <Link to="/register" 
+          // onClick={handleRegisterClick}
+          >
+            <FaUserPlus />Cadastrar novo
+          </Link>
+        </div> */}
       </form>
     </div>
   );
