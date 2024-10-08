@@ -67,6 +67,7 @@ export function CmpP() {
       <div className={styles.container}>
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>Custo Médio Principal Unimarcas</h1>
+          <strong>Banco de dados (desatualizado)</strong>
         </div>
 
         <input 
