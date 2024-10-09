@@ -5,7 +5,15 @@
   font-size: 0.80rem;
   padding: 0px 10px;
   padding-bottom: 60px;
+  position: relative;
 }
+
+.container .input_list{
+  position: absolute;
+  top: 10px;
+  right: 5px;
+}
+
 .table-container {
   width: 100%;
   overflow-x: auto;
@@ -289,7 +297,84 @@ h3 {
   margin: 0;
   padding: 0;
 }
+
+.errorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+  font-weight: bold;
+  margin-top:150px;
+}
+
+.errorMessage {
+  font-size: 1.2rem;
+}
+
+
+/* input_list */
+.input_list {
+  display: inline-flex;
+  align-items: center;  
+  justify-content: center;  
+  gap: 10px;  
+  margin-top: 50px;
+}
+
+.searchInput:focus {
+  border-color: #2542E0;  
+}
+
+.profileSelect {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s;
+  outline: none;
+  cursor: pointer;
+}
+
+.profileSelect:focus {
+  border-color: #2542E0;
+}
+
+.profileSelect option {
+  font-size: 16px;
+}
+
  
+
+.inputContainer {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.searchInput {
+  padding-right: 30px;  
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s;
+  width: 350px;
+}
+
+.searchInput:focus {
+  border-color: #2542E0;
+}
+
+.clearIcon {
+  position: absolute;
+  right: 10px; /* Posiciona o ícone à direita do input */
+  color: red;
+  font-size: 36px;
+  cursor: pointer;
+}
+
 /* Ajuste de Layout Responsivo */
 @media(max-width: 768px) {
   .table th, .table td {

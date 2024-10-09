@@ -23,12 +23,20 @@ export function CmpP() {
   const fetchProcessedData = async () => {
     try {
       setIsLoading(true);
-      const queryParam = debouncedSearchQuery ? `&cod_produto=${encodeURIComponent(debouncedSearchQuery)}` : '';
+      let queryParam = "";
+      
+       // Verifica se `searchQuery` possui um underscore ("_") para definir se é produto ou cod_produto
+       if (debouncedSearchQuery.includes('_')) {
+        // Extrai a parte numérica antes do primeiro underline para a consulta em `produto`
+        const formattedProductQuery = debouncedSearchQuery.split('_')[0];
+        queryParam = `produto=${encodeURIComponent(formattedProductQuery)}`;
+      } else {
+        // Caso contrário, utiliza o `searchQuery` diretamente para `cod_produto`
+        queryParam = `cod_produto=${encodeURIComponent(debouncedSearchQuery)}`;
+      }
       const response = await axios.get(`/api/get_processed_data?${queryParam}`);
       const { data } = response.data;
-
-      setData(data);
-      
+      setData(data);      
       // Definir a descrição do produto com base no primeiro item retornado
       if (data.length > 0) {
         setProductDescription(data[0].descricao1);

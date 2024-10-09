@@ -5,6 +5,7 @@ import { Header } from "../../../components/Header/Header";
 import ReactPaginate from 'react-paginate';
 import { FaArrowLeft, FaEye, FaSortUp, FaSortDown, FaCopy, FaShoppingCart } from 'react-icons/fa'; // Incluindo FaShoppingCart
 import styles from "./orders.module.css";
+import { Triangle } from 'react-loader-spinner';
 import { useNavigate } from "react-router-dom";
 
 export function Orders() {
@@ -13,12 +14,14 @@ export function Orders() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [profileId, setProfileId] = useState("")
   const [expandedOrderId, setExpandedOrderId] = useState(null);
   const [expandedOrderDetails, setExpandedOrderDetails] = useState(null);
   const [sortConfig, setSortConfig] = useState({ key: 'date', direction: 'desc' });
   const [currentPage, setCurrentPage] = useState(1);
-  const [copiedSku, setCopiedSku] = useState(null); // Estado para controlar a cópia de SKU
-  const [copiedOrderId, setCopiedOrderId] = useState(null); // Estado para controlar a cópia de Order ID
+  const [copiedSku, setCopiedSku] = useState(null);  
+  const [copiedOrderId, setCopiedOrderId] = useState(null);  
+  const [profileOptions, setProfileOptions] = useState([]); 
   const navigate = useNavigate();
 
   const goToOrders = () => {
@@ -29,7 +32,8 @@ export function Orders() {
     try {
       setIsLoading(true);
       const queryParam = searchQuery ? `&query=${encodeURIComponent(searchQuery)}` : '';
-      const response = await axios.get(`/api/processed_order_data?page=${page}${queryParam}`);
+      const profileParam = profileId ? `&profile_id=${encodeURIComponent(profileId)}` : '';
+      const response = await axios.get(`/api/processed_order_data?page=${page}${queryParam}${profileParam}`);
       const { orders, pagination } = response.data;
       console.log(orders)
       const ordersWithDetails = await Promise.all(orders.map(async order => {
@@ -50,7 +54,8 @@ export function Orders() {
             seller_sku: order.seller_sku,
             profit: order.profit,
             profitability: order.profitability,
-            state:order.state
+            state:order.state,
+            profile_id: order.profile_id
           };
        
         } catch (err) {
@@ -63,15 +68,42 @@ export function Orders() {
       setPagination(pagination);
     } catch (err) {
       console.error("Erro ao buscar dados:", err);
-      setError("Ocorreu um erro ao carregar os dados.");
+      setError("Ocorreu um erro ao carregar os dados. Pressione ⌘ ou F5");
     } finally {
       setIsLoading(false);
     }
   };
+ 
+
+  const fetchProfileOptions = async () => {
+    try {
+      const response = await axios.get('/api/profiles/meta'); 
+     console.log(response.data.profiles)
+      
+     const profiles = response.data.profiles.map(profile => ({        
+        id: profile.id,  
+       brandName: profile.meta_dados.nickname,
+      }));
+      console.log(profiles)
+      setProfileOptions(profiles); 
+    } catch (err) {
+      console.error("Erro ao buscar profile_ids:", err);
+      setError("Ocorreu um erro ao carregar os perfis.");
+    }
+  };
+  
+  
+
+
 
   useEffect(() => {
     fetchOrders(currentPage);
-  }, [currentPage, searchQuery]);
+  }, [currentPage, searchQuery, profileId]);
+
+  useEffect(() => {
+    fetchProfileOptions(); 
+  }, []);
+
 
   const formatDate = (dateString) => {
     const [year, month, day] = dateString.split("T")[0].split("-");
@@ -152,13 +184,38 @@ export function Orders() {
           <h1 className={styles.title}>Detalhamento de Pedidos</h1>
         </div>
 
-        <input
-          type="text"
-          placeholder="Buscar por Seller SKU ou Order ID"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className={styles.searchInput}
-        />
+        <div className={styles.input_list}>
+              {/* Select para escolher profile_id */}
+              <select
+              value={profileId}
+              onChange={(e) => setProfileId(e.target.value)} 
+              // Define o profile_id (meta_profile) como valor
+              className={styles.profileSelect}
+            >
+              <option value="">TODAS AS LOJAS</option>
+              {profileOptions.map((option) => (
+                <option key={option.id} value={option.id}>
+                  {option.brandName}  
+                </option>
+              ))}
+            </select>
+
+       <div className={styles.inputContainer}>
+  <input
+    type="text"
+    placeholder="Buscar por Seller SKU ou Order ID"
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+    className={styles.searchInput}
+  />
+  {searchQuery && (
+    <span className={styles.clearIcon} onClick={() => setSearchQuery('')}>
+      &times;
+    </span>
+  )}
+</div>
+        </div>
+
         <button className={styles.backButton} onClick={goToOrders}>
           <FaArrowLeft />
           <span>Home</span>
@@ -167,10 +224,14 @@ export function Orders() {
         <div className={styles.tableContainer}>
           {isLoading ? (
             <div className={styles.loadingContainer}>
-              <img src={Spinner} alt="Loading..." className={styles.spinner} />
-            </div>
+            <img src={Spinner} alt="Loading..." className={styles.spinner} />
+          </div>
           ) : error ? (
-            <div className={styles.error}>{error}</div>
+            <div className={styles.errorContainer}>
+    <Triangle height="30" width="30" color="red" ariaLabel="loading" />
+    <span className={styles.errorMessage}>Ocorreu um erro ao carregar os dados. Pressione ⌘ ou F5</span>
+  
+  </div>
           ) : (
             <>
               <table className={styles.table}>
