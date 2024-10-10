@@ -3,7 +3,8 @@ import axios from '../../../services/axiosConfig';
 import Spinner from '../../../assets/images/loading.gif';
 import { Header } from "../../../components/Header/Header";
 import ReactPaginate from 'react-paginate';
-import { FaArrowLeft, FaEye, FaSearch, FaSortUp, FaSortDown, FaCopy, FaShoppingCart, FaBox } from 'react-icons/fa'; // Incluindo FaShoppingCart
+import { FaArrowLeft, FaEye, FaTimesCircle, 
+  FaCheckCircle,FaSearch, FaSortUp, FaSortDown, FaCopy, FaShoppingCart, FaBox } from 'react-icons/fa'; // Incluindo FaShoppingCart
 import styles from "./orders.module.css";
 import { Triangle } from 'react-loader-spinner';
 import { useNavigate } from "react-router-dom";
@@ -57,6 +58,7 @@ export function Orders() {
             state: order.state,
             profile_id: order.profile_id,
             imported: order.imported,
+            status: order.status,
           };
 
         } catch (err) {
@@ -234,7 +236,6 @@ export function Orders() {
             <div className={styles.errorContainer}>
               <Triangle height="30" width="30" color="red" ariaLabel="loading" />
               <span className={styles.errorMessage}>Ocorreu um erro ao carregar os dados. Pressione ⌘ ou F5</span>
-
             </div>
           ) : (
             <>
@@ -243,6 +244,7 @@ export function Orders() {
                   <tr>
                     <th className={styles.conta}>Conta</th>
                     <th className={styles.produto}>Produto</th>
+                    <th>Status</th>
                     <th className={styles.center} onClick={() => handleSort('date')}>
                       Data {sortConfig.key === 'date' && (sortConfig.direction === 'asc' ? <FaSortUp /> : <FaSortDown />)}
                     </th>
@@ -297,10 +299,18 @@ export function Orders() {
                               src={item.picture_urls[0]}
                               alt={item.item_title}
                               className={styles.productImageTable}
-                            />
+                            />                          
                             <span>{item.item_title}</span>
                           </div>
                         </td>
+                        <td>
+  {item.status === "cancelled" ? (
+    <FaTimesCircle style={{ color: 'red', marginRight: '15px' }} />
+  ) : (
+    <FaCheckCircle style={{ color: 'green', marginRight: '15px' }} />
+  )}
+</td>
+
                         <td className={styles.center}>{formatDate(item.date_created) || "Data não disponível"}</td>
                         <td className={styles.center}>{formatCurrent(item.item_unit_price)}</td>
                         <td className={styles.center}>{item.logistic_type || "Não possui"}</td>
