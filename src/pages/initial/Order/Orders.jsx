@@ -3,7 +3,7 @@ import axios from '../../../services/axiosConfig';
 import Spinner from '../../../assets/images/loading.gif';
 import { Header } from "../../../components/Header/Header";
 import ReactPaginate from 'react-paginate';
-import { FaArrowLeft, FaEye,FaSearch, FaSortUp, FaSortDown, FaCopy, FaShoppingCart, FaBox } from 'react-icons/fa'; // Incluindo FaShoppingCart
+import { FaArrowLeft, FaEye, FaSearch, FaSortUp, FaSortDown, FaCopy, FaShoppingCart, FaBox } from 'react-icons/fa'; // Incluindo FaShoppingCart
 import styles from "./orders.module.css";
 import { Triangle } from 'react-loader-spinner';
 import { useNavigate } from "react-router-dom";
@@ -19,9 +19,9 @@ export function Orders() {
   const [expandedOrderDetails, setExpandedOrderDetails] = useState(null);
   const [sortConfig, setSortConfig] = useState({ key: 'date', direction: 'desc' });
   const [currentPage, setCurrentPage] = useState(1);
-  const [copiedSku, setCopiedSku] = useState(null);  
-  const [copiedOrderId, setCopiedOrderId] = useState(null);  
-  const [profileOptions, setProfileOptions] = useState([]); 
+  const [copiedSku, setCopiedSku] = useState(null);
+  const [copiedOrderId, setCopiedOrderId] = useState(null);
+  const [profileOptions, setProfileOptions] = useState([]);
   const navigate = useNavigate();
 
   const goToOrders = () => {
@@ -54,17 +54,17 @@ export function Orders() {
             seller_sku: order.seller_sku,
             profit: order.profit,
             profitability: order.profitability,
-            state:order.state,
+            state: order.state,
             profile_id: order.profile_id,
             imported: order.imported,
           };
-       
+
         } catch (err) {
           console.error(`Erro ao buscar detalhes do item ${order.item_id}:`, err);
           return order;
         }
       }));
-    
+
       setData(ordersWithDetails);
       setPagination(pagination);
     } catch (err) {
@@ -74,26 +74,26 @@ export function Orders() {
       setIsLoading(false);
     }
   };
- 
+
 
   const fetchProfileOptions = async () => {
     try {
-      const response = await axios.get('/api/profiles/meta'); 
-     console.log(response.data.profiles)
-      
-     const profiles = response.data.profiles.map(profile => ({        
-        id: profile.id,  
-       brandName: profile.meta_dados.nickname,
+      const response = await axios.get('/api/profiles/meta');
+      console.log(response.data.profiles)
+
+      const profiles = response.data.profiles.map(profile => ({
+        id: profile.id,
+        brandName: profile.meta_dados.nickname,
       }));
       console.log(profiles)
-      setProfileOptions(profiles); 
+      setProfileOptions(profiles);
     } catch (err) {
       console.error("Erro ao buscar profile_ids:", err);
       setError("Ocorreu um erro ao carregar os perfis.");
     }
   };
-  
-  
+
+
 
 
 
@@ -102,7 +102,7 @@ export function Orders() {
   }, [currentPage, searchQuery, profileId]);
 
   useEffect(() => {
-    fetchProfileOptions(); 
+    fetchProfileOptions();
   }, []);
 
 
@@ -127,7 +127,7 @@ export function Orders() {
     if (value === null || value === undefined) {
       return 'N/A';
     }
-      return value.replace(/\./g, ',');
+    return value.replace(/\./g, ',');
   };
 
   // Função para formatar o lucro percentual (profit)
@@ -178,7 +178,7 @@ export function Orders() {
   };
 
   return (
-    <div> 
+    <div>
       <Header />
       <div className={styles.container}>
         <div className={styles.titleContainer}>
@@ -186,31 +186,31 @@ export function Orders() {
         </div>
 
         <div className={styles.input_list}>
-              {/* Select para escolher profile_id */}
-              <select
-              value={profileId}
-              onChange={(e) => setProfileId(e.target.value)} 
-              // Define o profile_id (meta_profile) como valor
-              className={styles.profileSelect}
-            >
-              <option value="">TODAS AS LOJAS</option>
-              {profileOptions.map((option) => (
-                <option key={option.id} value={option.id}>
-                  {option.brandName}  
-                </option>
-              ))}
-            </select>
+          {/* Select para escolher profile_id */}
+          <select
+            value={profileId}
+            onChange={(e) => setProfileId(e.target.value)}
+            // Define o profile_id (meta_profile) como valor
+            className={styles.profileSelect}
+          >
+            <option value="">TODAS AS LOJAS</option>
+            {profileOptions.map((option) => (
+              <option key={option.id} value={option.id}>
+                {option.brandName}
+              </option>
+            ))}
+          </select>
 
           <div className={styles.inputContainer}>
             <div className={styles.searchContainer}>
               <FaSearch className={styles.searchIcon} />
-            <input
-              type="text"
-              placeholder="Buscar por SKU ou Pedido"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className={styles.searchInput}
-            />
+              <input
+                type="text"
+                placeholder="Buscar SKU ou PEDIDO"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className={styles.searchInput}
+              />
             </div>
             {searchQuery && (
               <span className={styles.clearIcon} onClick={() => setSearchQuery('')}>
@@ -228,14 +228,14 @@ export function Orders() {
         <div className={styles.tableContainer}>
           {isLoading ? (
             <div className={styles.loadingContainer}>
-            <img src={Spinner} alt="Loading..." className={styles.spinner} />
-          </div>
+              <img src={Spinner} alt="Loading..." className={styles.spinner} />
+            </div>
           ) : error ? (
             <div className={styles.errorContainer}>
-    <Triangle height="30" width="30" color="red" ariaLabel="loading" />
-    <span className={styles.errorMessage}>Ocorreu um erro ao carregar os dados. Pressione ⌘ ou F5</span>
-  
-  </div>
+              <Triangle height="30" width="30" color="red" ariaLabel="loading" />
+              <span className={styles.errorMessage}>Ocorreu um erro ao carregar os dados. Pressione ⌘ ou F5</span>
+
+            </div>
           ) : (
             <>
               <table className={styles.table}>
@@ -275,6 +275,8 @@ export function Orders() {
                             {item.order_id || "Indisponível"}
                             <FaCopy style={{ marginLeft: '5px' }} />
                           </span>
+
+
                           {item.pack_id && item.pack_count > 1 && (
                             <span style={{ display: 'flex', alignItems: 'center', marginTop: '5px' }}>
                               <FaShoppingCart style={{ marginRight: '2px' }} />
@@ -307,7 +309,7 @@ export function Orders() {
                         <td className={styles.center}>{formatCurrent(item.commission)}</td>
                         <td className={styles.center}>{formatCurrent(item.discount_total)}</td>
                         <td className={styles.center}>{formatCurrent(item.pass_on)}</td>
-                        <td className={styles.center}>{item.profit === null ?  'N/A':`${formatCurrentProfit(formatProfit(item.profit))} %`}</td>
+                        <td className={styles.center}>{item.profit === null ? 'N/A' : `${formatCurrentProfit(formatProfit(item.profit))} %`}</td>
                         <td className={styles.center}>0,0</td>
                         <td className={`${styles.actionButton} ${styles.center}`}>
                           <a href={item.permalink} target="_blank" rel="noopener noreferrer"><FaEye /></a>
@@ -319,8 +321,8 @@ export function Orders() {
                               shared_discount: item.shared_discount,
                               seller_sku: item.seller_sku,
                               profitability: item.profitability,
-                              state:item.state,
-                              imported:item.imported,
+                              state: item.state,
+                              imported: item.imported,
                             })}
                           >+</button>
                         </td>
@@ -331,7 +333,7 @@ export function Orders() {
                             <div>
                               <p><strong>DETALHES: </strong></p>
                               <p><strong>Estado Origem:</strong> {expandedOrderDetails?.state}</p>
-                              <p><strong>Importado:</strong> {expandedOrderDetails?.imported == 1 ? "Sim":expandedOrderDetails.imported == 0 ? "Não":"Indefinido"}</p>
+                              <p><strong>Importado:</strong> {expandedOrderDetails?.imported == 1 ? "Sim" : expandedOrderDetails.imported == 0 ? "Não" : "Indefinido"}</p>
                               <p><strong>Lucro:</strong> {formatCurrent(expandedOrderDetails?.profitability)}</p>
                               <p><strong>Reembolso de Frete:</strong> {formatCurrent(expandedOrderDetails?.refund_freight_flex)}</p>
                               <p><strong>Desconto Compartilhado:</strong> {formatCurrent(expandedOrderDetails?.shared_discount)}</p>
