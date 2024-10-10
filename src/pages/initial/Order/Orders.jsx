@@ -55,7 +55,8 @@ export function Orders() {
             profit: order.profit,
             profitability: order.profitability,
             state:order.state,
-            profile_id: order.profile_id
+            profile_id: order.profile_id,
+            imported: order.imported,
           };
        
         } catch (err) {
@@ -326,6 +327,7 @@ export function Orders() {
                             <div>
                               <p><strong>DETALHES: </strong></p>
                               <p><strong>Estado Origem:</strong> {expandedOrderDetails?.state}</p>
+                              <p><strong>Importado:</strong> {expandedOrderDetails?.imported == 1 ? "Importado":expandedOrderDetails.imported == 0 ? "Nacional":"Indefinido"}</p>
                               <p><strong>Lucro:</strong> {formatCurrent(expandedOrderDetails?.profitability)}</p>
                               <p><strong>Reembolso de Frete:</strong> {formatCurrent(expandedOrderDetails?.refund_freight_flex)}</p>
                               <p><strong>Desconto Compartilhado:</strong> {formatCurrent(expandedOrderDetails?.shared_discount)}</p>
