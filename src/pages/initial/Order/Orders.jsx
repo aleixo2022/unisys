@@ -204,7 +204,7 @@ export function Orders() {
        <div className={styles.inputContainer}>
   <input
     type="text"
-    placeholder="Buscar por Seller SKU ou Order ID"
+    placeholder="Buscar por SKU ou Pedido"
     value={searchQuery}
     onChange={(e) => setSearchQuery(e.target.value)}
     className={styles.searchInput}
