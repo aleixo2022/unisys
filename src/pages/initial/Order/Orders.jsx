@@ -317,6 +317,7 @@ export function Orders() {
                               seller_sku: item.seller_sku,
                               profitability: item.profitability,
                               state:item.state,
+                              imported:item.imported,
                             })}
                           >+</button>
                         </td>
