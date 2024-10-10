@@ -305,11 +305,18 @@ export function Orders() {
                         </td>
                         <td>
   {item.status === "cancelled" ? (
-    <FaTimesCircle style={{ color: 'red', marginRight: '15px' }} />
+    <FaTimesCircle
+      style={{ color: 'red', marginRight: '15px' }}
+      title="Pedido Cancelado"
+    />
   ) : (
-    <FaCheckCircle style={{ color: 'green', marginRight: '15px' }} />
+    <FaCheckCircle
+      style={{ color: 'green', marginRight: '15px' }}
+      title="Pedido Ativo"
+    />
   )}
 </td>
+
 
                         <td className={styles.center}>{formatDate(item.date_created) || "Data não disponível"}</td>
                         <td className={styles.center}>{formatCurrent(item.item_unit_price)}</td>
