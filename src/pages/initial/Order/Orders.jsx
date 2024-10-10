@@ -3,7 +3,7 @@ import axios from '../../../services/axiosConfig';
 import Spinner from '../../../assets/images/loading.gif';
 import { Header } from "../../../components/Header/Header";
 import ReactPaginate from 'react-paginate';
-import { FaArrowLeft, FaEye, FaSortUp, FaSortDown, FaCopy, FaShoppingCart } from 'react-icons/fa'; // Incluindo FaShoppingCart
+import { FaArrowLeft, FaEye, FaSortUp, FaSortDown, FaCopy, FaShoppingCart, FaBox } from 'react-icons/fa'; // Incluindo FaShoppingCart
 import styles from "./orders.module.css";
 import { Triangle } from 'react-loader-spinner';
 import { useNavigate } from "react-router-dom";
@@ -328,7 +328,7 @@ export function Orders() {
                             <div>
                               <p><strong>DETALHES: </strong></p>
                               <p><strong>Estado Origem:</strong> {expandedOrderDetails?.state}</p>
-                              <p><strong>Importado:</strong> {expandedOrderDetails?.imported == 1 ? "Importado":expandedOrderDetails.imported == 0 ? "Nacional":"Indefinido"}</p>
+                              <p><strong>Importado:</strong> {expandedOrderDetails?.imported == 1 ? "Sim":expandedOrderDetails.imported == 0 ? "Não":"Indefinido"}</p>
                               <p><strong>Lucro:</strong> {formatCurrent(expandedOrderDetails?.profitability)}</p>
                               <p><strong>Reembolso de Frete:</strong> {formatCurrent(expandedOrderDetails?.refund_freight_flex)}</p>
                               <p><strong>Desconto Compartilhado:</strong> {formatCurrent(expandedOrderDetails?.shared_discount)}</p>
