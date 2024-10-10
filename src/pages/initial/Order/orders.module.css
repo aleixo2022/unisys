@@ -380,6 +380,24 @@ h3 {
   cursor: pointer;
 }
 
+
+/* input de pesquisa de pedidos e sku*/
+.searchContainer{
+  position:relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon{
+  position: absolute;
+  left:10px;
+  color: #808080;
+}
+
+.searchInput{
+  padding-left: 30px;
+  width: 100%;
+}
 /* Ajuste de Layout Responsivo */
 @media(max-width: 768px) {
   .table th, .table td {

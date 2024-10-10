@@ -3,7 +3,7 @@ import axios from '../../../services/axiosConfig';
 import Spinner from '../../../assets/images/loading.gif';
 import { Header } from "../../../components/Header/Header";
 import ReactPaginate from 'react-paginate';
-import { FaArrowLeft, FaEye, FaSortUp, FaSortDown, FaCopy, FaShoppingCart, FaBox } from 'react-icons/fa'; // Incluindo FaShoppingCart
+import { FaArrowLeft, FaEye,FaSearch, FaSortUp, FaSortDown, FaCopy, FaShoppingCart, FaBox } from 'react-icons/fa'; // Incluindo FaShoppingCart
 import styles from "./orders.module.css";
 import { Triangle } from 'react-loader-spinner';
 import { useNavigate } from "react-router-dom";
@@ -201,20 +201,23 @@ export function Orders() {
               ))}
             </select>
 
-       <div className={styles.inputContainer}>
-  <input
-    type="text"
-    placeholder="Buscar por SKU ou Pedido"
-    value={searchQuery}
-    onChange={(e) => setSearchQuery(e.target.value)}
-    className={styles.searchInput}
-  />
-  {searchQuery && (
-    <span className={styles.clearIcon} onClick={() => setSearchQuery('')}>
-      &times;
-    </span>
-  )}
-</div>
+          <div className={styles.inputContainer}>
+            <div className={styles.searchContainer}>
+              <FaSearch className={styles.searchIcon} />
+            <input
+              type="text"
+              placeholder="Buscar por SKU ou Pedido"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className={styles.searchInput}
+            />
+            </div>
+            {searchQuery && (
+              <span className={styles.clearIcon} onClick={() => setSearchQuery('')}>
+                &times;
+              </span>
+            )}
+          </div>
         </div>
 
         <button className={styles.backButton} onClick={goToOrders}>
@@ -304,7 +307,7 @@ export function Orders() {
                         <td className={styles.center}>{formatCurrent(item.commission)}</td>
                         <td className={styles.center}>{formatCurrent(item.discount_total)}</td>
                         <td className={styles.center}>{formatCurrent(item.pass_on)}</td>
-                        <td className={styles.center}>{formatCurrentProfit(formatProfit(item.profit))} %</td>
+                        <td className={styles.center}>{item.profit === null ?  'N/A':`${formatCurrentProfit(formatProfit(item.profit))} %`}</td>
                         <td className={styles.center}>0,0</td>
                         <td className={`${styles.actionButton} ${styles.center}`}>
                           <a href={item.permalink} target="_blank" rel="noopener noreferrer"><FaEye /></a>
