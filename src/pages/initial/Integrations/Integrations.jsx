@@ -62,7 +62,7 @@ export function Integrations() {
 
     const fetchProfiles = async () => {
         try {
-            const response = await axios.get('/api/profiles/profiles', {
+            const response = await axios.get('/api/profiles', {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`
                 }
