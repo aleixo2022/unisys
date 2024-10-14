@@ -117,7 +117,8 @@ export function CmpP() {
                   <th className={styles.center}>IPI</th>
                   <th className={styles.center}>Data Fin.</th>
                   <th className={styles.center}>Data Imp.</th>
-                  <th className={styles.center}>Preço</th>
+                  <th className={styles.center}>Preço NF</th>
+                  <th className={styles.center}>Preço Liq</th>
                   <th className={styles.center}>Saldo Dia</th>
                   <th className={styles.center}>Qtde</th>
                   <th className={styles.center}>C.Méd. Liq</th>
@@ -139,6 +140,7 @@ export function CmpP() {
                     <td className={styles.center}>{formatDate(item.data_finalizacao)}</td>
                     <td className={styles.center}>{formatDate(item.dataimp)}</td>
                     <td className={styles.center}>{formatCurrency(item.preco)}</td>
+                    <td className={styles.center}>{formatCurrency(item.preco_lq)}</td>
                     <td className={styles.center}>{item.saldo_dia_alpha || 0}</td>
                     <td className={styles.center}>{item.quantidade || 0}</td>
                     <td className={styles.center}>{formatCurrency(item.cmp)}</td>
